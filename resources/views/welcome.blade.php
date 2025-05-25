@@ -2,7 +2,8 @@
     <x-container>
         <div class="flex flex-col gap-8">
             <div class="flex flex-col text-center gap-2">
-                <h1 class="font-bold text-xl">{{ Str::ucfirst(Str::replace('_', ' ', config('app.name'))) }}</h1>
+                <h1 class="font-bold text-xl">{{ Str::ucfirst(Str::replace('_', ' ', config('app.name', 'Laravel'))) }}
+                </h1>
                 <p class="text-sm">Pinjaman santai, bayar bisa nanti.</p>
             </div>
             <div class="flex flex-row m-auto gap-4">
