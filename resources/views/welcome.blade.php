@@ -9,7 +9,7 @@
             <div class="flex flex-row m-auto gap-4">
                 @auth
                     @if(auth()->user()->role === 'admin')
-                        <x-nav-link href="{{ route('admin') }}">
+                        <x-nav-link href="{{ route('dashboard') }}">
                             Dashboard
                         </x-nav-link>
                     @elseif (auth()->user()->role === 'user')

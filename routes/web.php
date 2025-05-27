@@ -25,9 +25,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // User Page
 Route::middleware(['auth', 'verified', AuthWeb::class])->group(function () {
-    Route::get("/admin", function () {
-        return view('page.admin.admin');
-    })->name('admin');
+    Route::get("/dashboard", function () {
+        return view('dashboard');
+    })->name('dashboard');
     Route::get('/kelola-pinjaman', function () {
         return view('page.admin.kelola_pinjaman');
     })->name('kelola_pinjaman');

@@ -1,8 +1,8 @@
 <x-app-layout>
     @slot('header_title')
-    Kelola pinjaman
+    Dashboard
     @endslot
     <x-container>
-        <h1>Tabel Kelola Pinjaman</h1>
+        <h1>Hallo {{ auth()->user()->name }}</h1>
     </x-container>
 </x-app-layout>

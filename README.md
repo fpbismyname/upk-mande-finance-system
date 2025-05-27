@@ -13,15 +13,27 @@
 2. php artisan key:generate
 3. npm install
 
-## Cara migrate setup database dan Run Project
+## Cara migrate setup database
 
 1. Buka 1 terminal baru
    a.ketik 'php artisan migrate --seed'
-2. Buka 2 terminal baru
-   a. ketik 'npm run dev' lalu enter
-   b. ketik 'php artisan serve' lalu enter, lalu masuk ke http://127.0.0.1:8000 dan test webnya
+
+## Cara run website di browser
+
+1. Buka 2 terminal baru
+   a. ketik 'npm run dev' lalu enter (Untuk build tailwindnya agar bisa di styling)
+   b. ketik 'php artisan serve' lalu enter, lalu masuk ke http://127.0.0.1:8000 dan test webnya di browser
 
 ## Cara ganti tampilan halaman
 
 1. Untuk ganti tampilan halaman admin ada di resources/views/page/admin
 2. Untuk ganti tampilan halaman user ada di resources/views/page/user
+
+## Akun untuk login
+
+1. Admin
+    - email : adminupkmande@gmail.com
+    - pass : adminupkmande999
+1. User
+    - email : budi@gmail.com
+    - pass : budifer9921

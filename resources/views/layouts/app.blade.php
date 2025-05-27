@@ -16,24 +16,60 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+<body class="font-sans antialiased bg-gray-100">
+    @auth
+        @if (auth()->user()->role === 'admin')
+            {{-- Admin Layout: Sidebar --}}
+            <div class="flex min-h-screen">
+                @include('layouts.sidebar')
+                <div class="flex-1 flex flex-col">
+                    <header class="bg-white shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            <div class="flex flex-row justify-between">
+                                @isset($header_title)
+                                    <h5 class="font-bold"> {{ $header_title }}</h5>
+                                @else
+                                    <h5 class="font-bold">{{ Str::ucfirst(Str::replace('_', ' ', config('app.name', 'Laravel'))) }}
+                                    </h5>
+                                @endisset
+                                <h5>{{ auth()->user()->name }}</h5>
+                            </div>
+                        </div>
+                    </header>
 
-        <!-- Page Heading -->
-        @isset($header)
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+                    <main class="p-4">
+                        {{ $slot }}
+                    </main>
                 </div>
-            </header>
-        @endisset
+            </div>
+        @else
+            {{-- User Layout: Navbar --}}
+            <div class="min-h-screen">
+                @include('layouts.navigation')
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+                @isset($header)
+                    <header class="bg-white shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endisset
+
+                <main class="p-4">
+                    {{ $slot }}
+                </main>
+            </div>
+        @endif
+    @else
+        {{-- Guest Layout --}}
+        <div class="min-h-screen">
+            @include('layouts.navigation')
+
+            <main class="p-4">
+                {{ $slot }}
+            </main>
+        </div>
+    @endauth
 </body>
 
 </html>
